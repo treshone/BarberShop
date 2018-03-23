@@ -17,6 +17,12 @@ end
 class Barber < ActiveRecord::Base
 end	
 
+class Contact < ActiveRecord::Base
+	validates :name, presence: true
+	validates :email, presence: true
+	validates :phone, presence: true
+end	
+
 before do
 	@barbers = Barber.all
 end	
@@ -57,5 +63,18 @@ get '/client/:id' do
 end
 
 get '/contacts' do
+	@user = Contact.new
 	erb :contacts
 end		
+
+post '/contacts' do
+	@user = Contact.new params[:contact]
+	if @user.save
+		erb "<h2>Спасибо, с вами свяжутся в ближайшее время.</h2>"
+	else
+		@error = @user.errors.full_messages.first
+		erb :contacts
+	end		
+end
+
+

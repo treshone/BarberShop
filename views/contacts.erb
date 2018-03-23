@@ -1,17 +1,17 @@
 <h2>Вы можете оставить свои контактные данные</h2>
-<form>
+<form action="/contacts" method="POST" role="form">
 	<div class="form-group">
     	<label>Ваше имя</label>
-    	<input name="" type="text" class="form-control" placeholder="Введите имя" value="">
+    	<input name="contact[name]" type="text" class="form-control" placeholder="Введите имя" value="<%= @user.name %>">
 	</div>
 
 	<div class="form-group">
     	<label>Ваш email</label>
-    	<input name="" type="email" class="form-control"  placeholder="Введите email">
+    	<input name="contact[email]" type="email" class="form-control"  placeholder="Введите email" value="<%= @user.email %>">
 	</div>
 	<div class="form-group">
     	<label>Ваш телефон</label>
-    	<input name="" type="text" class="form-control" placeholder="Введите номер" value="">
+    	<input name="contact[phone]" type="text" class="form-control" placeholder="Введите номер" value="<%= @user.phone %>">
 	</div>
 	<button type="submit" class="btn btn-primary">Отправить</button>
 </form>
